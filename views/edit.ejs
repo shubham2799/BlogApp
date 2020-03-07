@@ -1,0 +1,29 @@
+<%- include("partials/header") %>
+
+<div class="container">
+	<h1 class="text-center mt-4 mb-3">Edit <%= blog.title %></h1>
+	<form action="/blogs/<%= blog._id %>?_method=PUT" method="POST" style="width: 100%; max-width: 600px; margin: auto;" class="border p-4">
+		<div class="form-group">
+			<label><h4>Title</h4></label>
+			<input type="text" name="blog[title]" placeholder="Title" class="form-control" value="<%= blog.title %>">
+		</div>
+		<div class="form-group">
+			<label><h4>Image URL</h4></label>
+			<input type="text" name="blog[image]" placeholder="Image" class="form-control" value="<%= blog.image %>">
+		</div>
+		<div class="form-group">
+			<label><h4>Blog Content</h4></label>
+			<textarea name="blog[body]" style="width: 100%; height: 200px;"><%= blog.body %></textarea>
+		</div>
+		<div class="row">
+			<div class="col-6">
+				<a href="/blogs/<%= blog._id %>" class="btn btn-success btn-block">Go Back <i class="fas fa-undo ml-1"></i></a>
+			</div>
+			<div class="col-6">
+				<button class="btn btn-warning btn-block">Edit Blog <i class="fas fa-pen ml-1"></i></button>
+			</div>
+		</div>
+	</form>
+</div>
+
+<%- include("partials/footer") %>

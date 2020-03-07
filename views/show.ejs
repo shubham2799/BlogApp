@@ -1,0 +1,23 @@
+<%- include("partials/header") %>
+
+<div class="container" style="max-width: 800px; margin: auto;">
+	<div class="card m-4 p-3" >
+		<h1 class="card-title text-center"><%= blog.title %></h1>
+		<img src="<%= blog.image %>" class="card-img-top">
+		<div class="card-body">
+			<p class="card-text"><%- blog.body %></p>
+			<span class="mb-3"><strong><em>Posted by <%=blog.user%>, <%= blog.created.toDateString() %></em></strong></span>
+
+			<% if(currentUser && currentUser.username==blog.user) { %>
+				<div style="float: right;">
+					<a href="/blogs/<%= blog._id %>/edit" class="btn btn-warning">Edit Blog <i class="fas fa-pen ml-1"></i></a>
+					<form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" style="display: inline-block;">
+						<button class="btn btn-danger">Delete Blog <i class="fas fa-trash ml-1"></i></button>
+					</form>
+				</div>
+			<% } %>
+		</div>
+	</div>
+</div>
+
+<%- include("partials/footer") %>
