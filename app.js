@@ -184,8 +184,6 @@ function blogOwnership(req,res,next) {
 				req.flash("error","Blog not found!!");
 				res.redirect("/blogs/" + req.params.id);
 			} else {
-				console.log(blog.user);
-				console.log(req.user.username);
 				if(blog.user==req.user.username) {
 					next();
 				} else {
